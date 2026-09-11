@@ -30,7 +30,7 @@ export function MobileNav({
         </SheetTrigger>
         <SheetContent side="right" className="w-72">
           <SheetHeader>
-            <SheetTitle className="font-heading text-primary">
+            <SheetTitle className="font-brand text-2xl text-primary">
               {site.name}
             </SheetTitle>
           </SheetHeader>

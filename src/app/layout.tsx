@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Karla } from "next/font/google";
+import { Bodoni_Moda, Karla, Pacifico } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import { Navbar } from "@/components/navbar";
@@ -20,6 +20,14 @@ const body = Karla({
   variable: "--font-body",
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "700"],
+});
+
+// Bold brush script matching the hand-lettered "Bella Mąka" in the logo —
+// used only for the navbar/footer wordmark, not for running headings.
+const brand = Pacifico({
+  variable: "--font-brand",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -62,7 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pl"
-      className={`${heading.variable} ${body.variable} h-full antialiased`}
+      className={`${heading.variable} ${body.variable} ${brand.variable} h-full antialiased`}
     >
       <head>
         <script

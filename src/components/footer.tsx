@@ -6,9 +6,7 @@ export function Footer() {
     <footer className="border-t border-border bg-muted/50">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
         <div>
-          <p className="font-heading text-lg font-semibold text-primary">
-            {site.name}
-          </p>
+          <p className="font-brand text-2xl text-primary">{site.name}</p>
           <p className="mt-2 text-sm text-muted-foreground">
             {site.address.street}
             <br />
