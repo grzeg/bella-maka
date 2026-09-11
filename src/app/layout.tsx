@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Karla } from "next/font/google";
+import { Bodoni_Moda, Karla } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CookieConsent } from "@/components/cookie-consent";
 
-const heading = Fraunces({
+// Italiana (as suggested) has no latin-ext subset, so it drops Polish diacritics
+// (ą, ę, ć, ł, ń, ó, ś, ź, ż) entirely. Bodoni Moda gives the same high-contrast
+// Italian display-serif look — it's the actual Bodoni, an Italian typeface — with
+// full Polish support.
+const heading = Bodoni_Moda({
   variable: "--font-heading",
   subsets: ["latin", "latin-ext"],
-  weight: ["600", "700"],
+  weight: ["400", "700"],
 });
 
 const body = Karla({
@@ -39,7 +43,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   name: site.name,
-  image: `${site.url}/logo-badge.png`,
+  image: `${site.url}/images/logo/badge.jpg`,
   url: site.url,
   telephone: site.phone,
   servesCuisine: "Pizza",

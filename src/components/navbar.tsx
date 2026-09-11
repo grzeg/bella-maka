@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 import { MobileNav } from "@/components/mobile-nav";
+import Image from "next/image";
 
 const links = [
   { href: "/menu", label: "Menu" },
@@ -18,8 +19,15 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link
           href="/"
-          className="font-heading text-lg font-semibold tracking-tight text-primary"
+          className="flex items-center gap-2 font-heading text-lg font-semibold tracking-tight text-primary"
         >
+          <Image
+            src="/images/logo/badge.jpg"
+            alt=""
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
           {site.name}
         </Link>
 

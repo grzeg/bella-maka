@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -21,7 +22,14 @@ export default function MenuPage() {
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {menuHighlights.map((item) => (
           <Card key={item.name}>
-            <CardContent className="pt-0">
+            <Image
+              src={item.image}
+              alt={`Pizza ${item.name}`}
+              width={640}
+              height={420}
+              className="h-44 w-full object-cover"
+            />
+            <CardContent>
               <div className="flex items-start justify-between gap-2">
                 <p className="font-heading text-lg font-semibold text-foreground">
                   {item.name}
