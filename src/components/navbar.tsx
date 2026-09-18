@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { UtensilsCrossed } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 import { MobileNav } from "@/components/mobile-nav";
@@ -77,7 +77,7 @@ export function Navbar({ locale }: { locale: Locale }) {
             />
           }
         >
-          <UtensilsCrossed className="size-5" />
+          <ShoppingBag className="size-5" />
         </Button>
 
         <MobileNav
