@@ -12,17 +12,23 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { site } from "@/data/site";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import type { Locale } from "@/i18n/config";
 
 export function MobileNav({
   links,
   orderLabel,
   openLabel,
   siteName = site.name,
+  locale,
+  switchLanguageLabel,
 }: {
   links: { href: string; label: string }[];
   orderLabel: string;
   openLabel: string;
   siteName?: string;
+  locale: Locale;
+  switchLanguageLabel: string;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -51,6 +57,9 @@ export function MobileNav({
                 {link.label}
               </Link>
             ))}
+            <div className="mt-2 px-2">
+              <LanguageSwitcher locale={locale} label={switchLanguageLabel} />
+            </div>
             <Button
               className="mt-3"
               nativeButton={false}

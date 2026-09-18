@@ -4,6 +4,7 @@ import { ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 import { MobileNav } from "@/components/mobile-nav";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { getDictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/config";
 
@@ -48,7 +49,8 @@ export function Navbar({ locale }: { locale: Locale }) {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-4 md:flex">
+          <LanguageSwitcher locale={locale} label={dict.nav.switchLanguage} />
           <Button
             nativeButton={false}
             render={
@@ -85,6 +87,8 @@ export function Navbar({ locale }: { locale: Locale }) {
           orderLabel={dict.nav.orderOnline}
           openLabel={dict.nav.openMenu}
           siteName={site.name}
+          locale={locale}
+          switchLanguageLabel={dict.nav.switchLanguage}
         />
       </div>
     </header>

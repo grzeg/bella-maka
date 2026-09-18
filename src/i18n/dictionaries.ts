@@ -16,6 +16,7 @@ const dictionaries = {
       contact: "Kontakt",
       orderOnline: "Zamów online",
       openMenu: "Otwórz menu",
+      switchLanguage: "Zmień język",
     },
     home: {
       cityTagline: "Brzeg Dolny, Dolny Śląsk",
@@ -114,6 +115,7 @@ const dictionaries = {
       contact: "Contact",
       orderOnline: "Order online",
       openMenu: "Open menu",
+      switchLanguage: "Switch language",
     },
     home: {
       cityTagline: "Brzeg Dolny, Lower Silesia",
