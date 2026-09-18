@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
 import { getAllPosts } from "@/lib/blog";
+import { locales } from "@/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = [
+  const routes = [
     "",
     "/menu",
     "/galeria",
@@ -11,15 +12,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/o-nas",
     "/blog",
     "/kontakt",
-  ].map((route) => ({
-    url: `${site.url}${route}`,
-    lastModified: new Date(),
-  }));
+  ];
 
-  const postRoutes = getAllPosts().map((post) => ({
-    url: `${site.url}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-  }));
+  const staticRoutes = locales.flatMap((locale) =>
+    routes.map((route) => ({
+      url: `${site.url}/${locale}${route}`,
+      lastModified: new Date(),
+    })),
+  );
+
+  const postRoutes = locales.flatMap((locale) =>
+    getAllPosts().map((post) => ({
+      url: `${site.url}/${locale}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+    })),
+  );
 
   return [...staticRoutes, ...postRoutes];
 }

@@ -1,13 +1,17 @@
 import Link from "next/link";
 import { site } from "@/data/site";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/config";
 
-export function Footer() {
+export function Footer({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+
   return (
-    <footer className="border-t border-border bg-muted/50">
+    <footer className="border-border bg-muted/50 border-t">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
         <div>
-          <p className="font-brand text-2xl text-primary">{site.name}</p>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="font-brand text-primary text-2xl">{site.name}</p>
+          <p className="text-muted-foreground mt-2 text-sm">
             {site.address.street}
             <br />
             {site.address.note}
@@ -17,8 +21,10 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold text-foreground">Godziny otwarcia</p>
-          <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+          <p className="text-foreground text-sm font-semibold">
+            {dict.footer.hoursTitle}
+          </p>
+          <ul className="text-muted-foreground mt-2 space-y-1 text-sm">
             {site.hours.map((h) => (
               <li key={h.day} className="flex justify-between gap-4">
                 <span>{h.day}</span>
@@ -29,10 +35,15 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold text-foreground">Kontakt</p>
+          <p className="text-foreground text-sm font-semibold">
+            {dict.footer.contactTitle}
+          </p>
           <ul className="mt-2 space-y-1.5 text-sm">
             <li>
-              <a href={`tel:${site.phone}`} className="text-muted-foreground hover:text-primary">
+              <a
+                href={`tel:${site.phone}`}
+                className="text-muted-foreground hover:text-primary"
+              >
                 {site.phone}
               </a>
             </li>
@@ -53,17 +64,21 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary"
               >
-                Zamów na pyszne.pl
+                {dict.footer.orderOnPyszne}
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-border px-4 py-4 text-center text-xs text-muted-foreground sm:px-6">
-        © {new Date().getFullYear()} {site.name}, {site.city}. Wszystkie prawa zastrzeżone.{" "}
-        <Link href="/polityka-prywatnosci" className="underline underline-offset-2 hover:text-primary">
-          Polityka prywatności
+      <div className="border-border text-muted-foreground border-t px-4 py-4 text-center text-xs sm:px-6">
+        © {new Date().getFullYear()} {site.name}, {site.city}.{" "}
+        {dict.footer.rightsReserved}{" "}
+        <Link
+          href={`/${locale}/polityka-prywatnosci`}
+          className="hover:text-primary underline underline-offset-2"
+        >
+          {dict.footer.privacyPolicy}
         </Link>
       </div>
     </footer>

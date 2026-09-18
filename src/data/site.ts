@@ -3,14 +3,13 @@ export const site = {
   city: "Brzeg Dolny",
   cityGenitive: "Brzegu Dolnego", // "z Brzegu Dolnego"
   cityLocative: "Brzegu Dolnym", // "w Brzegu Dolnym"
-  url: "https://bellamaka.pl", // TODO: podmienić na docelową domenę
+  url: "https://bellamaka.pl",
   description:
     "Pizzeria Bella Mąka w Brzegu Dolnym — pizza z pieca, szybki dowóz i wynos. Zamówienia online przez pyszne.pl.",
-  phone: "+48 000 000 000", // TODO: prawdziwy numer
+  phone: "+48 512 613 840",
   hours: [
-    { day: "Poniedziałek – Czwartek", hours: "TODO – TODO" },
-    { day: "Piątek – Sobota", hours: "TODO – TODO" },
-    { day: "Niedziela", hours: "TODO – TODO" },
+    { day: "Poniedziałek – Sobota", hours: "14:00 – 22:00" },
+    { day: "Niedziela", hours: "Zamknięte" },
   ],
   address: {
     street: "ul. Stanisława Wyspiańskiego 16/Lok. 6A",
