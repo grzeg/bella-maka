@@ -66,12 +66,8 @@ const dictionaries = {
       title: "Opinie",
       seeMoreOn: "Zobacz też pełne opinie na",
       facebook: "Facebooku",
-      // TODO: podmienić na prawdziwe opinie z Google/Facebooka/pyszne.pl (albo osadzić widżet Google Reviews)
-      placeholderAuthor: "Klient/-ka",
-      placeholder1:
-        "Miejsce na prawdziwe opinie z Google, Facebooka lub pyszne.pl.",
-      placeholder2:
-        "Warto podpiąć widżet Google Reviews — wzmacnia lokalne SEO.",
+      emptyState:
+        "Opinie klientów pojawią się tutaj wkrótce — zajrzyj na Facebooka.",
     },
     privacy: {
       title: "Polityka prywatności",
@@ -167,12 +163,7 @@ const dictionaries = {
       title: "Reviews",
       seeMoreOn: "See more reviews on",
       facebook: "Facebook",
-      // TODO: replace with real reviews from Google/Facebook/pyszne.pl (or embed a Google Reviews widget)
-      placeholderAuthor: "Customer",
-      placeholder1:
-        "Space for real reviews from Google, Facebook or pyszne.pl.",
-      placeholder2:
-        "Worth embedding a Google Reviews widget — helps local SEO.",
+      emptyState: "Customer reviews will appear here soon — check Facebook.",
     },
     privacy: {
       title: "Privacy policy",

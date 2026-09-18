@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { reviews } from "@/data/reviews";
 import { site } from "@/data/site";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -29,20 +30,7 @@ export default async function OpiniePage({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
-
-  // TODO: podmienić na prawdziwe opinie z Google/Facebooka/pyszne.pl (albo osadzić widżet Google Reviews)
-  const placeholderReviews = [
-    {
-      author: dict.reviews.placeholderAuthor,
-      text: dict.reviews.placeholder1,
-      rating: 5,
-    },
-    {
-      author: dict.reviews.placeholderAuthor,
-      text: dict.reviews.placeholder2,
-      rating: 5,
-    },
-  ];
+  const sortedReviews = [...reviews].sort((a, b) => b.rating - a.rating);
 
   return (
     <section className="mx-auto max-w-4xl px-4 py-14 sm:px-6">
@@ -62,19 +50,26 @@ export default async function OpiniePage({
         .
       </p>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        {placeholderReviews.map((review, i) => (
-          <div key={i} className="border-border bg-card rounded-xl border p-5">
-            <p className="text-brand-terracotta text-sm">
-              {"★".repeat(review.rating)}
-            </p>
-            <p className="text-card-foreground mt-2 text-sm">{review.text}</p>
-            <p className="text-muted-foreground mt-3 text-sm font-medium">
-              — {review.author}
-            </p>
-          </div>
-        ))}
-      </div>
+      {sortedReviews.length > 0 ? (
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {sortedReviews.map((review, i) => (
+            <div
+              key={i}
+              className="border-border bg-card rounded-xl border p-5"
+            >
+              <p className="text-brand-terracotta text-sm">
+                {"★".repeat(review.rating)}
+              </p>
+              <p className="text-card-foreground mt-2 text-sm">{review.text}</p>
+              <p className="text-muted-foreground mt-3 text-sm font-medium">
+                — {review.author}
+              </p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-muted-foreground mt-8">{dict.reviews.emptyState}</p>
+      )}
     </section>
   );
 }
