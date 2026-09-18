@@ -1,16 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, isLocale, locales } from "@/i18n/config";
-
-function getPreferredLocale(request: NextRequest) {
-  const acceptLanguage = request.headers.get("accept-language");
-  if (!acceptLanguage) return defaultLocale;
-
-  const preferred = acceptLanguage
-    .split(",")
-    .map((part) => part.split(";")[0].trim().slice(0, 2));
-
-  return preferred.find(isLocale) ?? defaultLocale;
-}
+import { defaultLocale, locales } from "@/i18n/config";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -22,9 +11,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const locale = getPreferredLocale(request);
+  // Always default to `defaultLocale`, never guess from Accept-Language —
+  // this is a local PL business site, not a language-detection product.
   const url = request.nextUrl.clone();
-  url.pathname = `/${locale}${pathname}`;
+  url.pathname = `/${defaultLocale}${pathname}`;
   return NextResponse.redirect(url);
 }
 
