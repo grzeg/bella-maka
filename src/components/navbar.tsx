@@ -28,7 +28,7 @@ export function Navbar({ locale }: { locale: Locale }) {
           className="font-brand text-primary flex items-center gap-2 text-2xl"
         >
           <Image
-            src="/images/logo/badge.jpg"
+            src="/images/logo/badge-round-512.png"
             alt=""
             width={40}
             height={40}

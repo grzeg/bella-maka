@@ -49,6 +49,13 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLocale(locale)) return {};
 
+  const ogImage = {
+    url: "/images/hero/poster.jpg",
+    width: 1440,
+    height: 1372,
+    alt: `${site.name} — Pizzeria w ${site.cityLocative}`,
+  };
+
   return {
     metadataBase: new URL(site.url),
     title: {
@@ -56,6 +63,10 @@ export async function generateMetadata({
       template: `%s — ${site.name}`,
     },
     description: site.description,
+    alternates: {
+      canonical: `/${locale}`,
+      languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
+    },
     openGraph: {
       title: `${site.name} — Pizzeria w ${site.cityLocative}`,
       description: site.description,
@@ -63,6 +74,13 @@ export async function generateMetadata({
       siteName: site.name,
       locale: ogLocaleByLocale[locale],
       type: "website",
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${site.name} — Pizzeria w ${site.cityLocative}`,
+      description: site.description,
+      images: [ogImage.url],
     },
   };
 }
