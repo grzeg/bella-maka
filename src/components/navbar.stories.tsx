@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { usePathname } from "@storybook/nextjs-vite/navigation.mock";
 import { expect } from "storybook/test";
 import { Navbar } from "./navbar";
 
@@ -16,6 +17,9 @@ type Story = StoryObj<typeof meta>;
 // the brand link and the mobile menu trigger (both locale-driven).
 export const Polish: Story = {
   args: { locale: "pl" },
+  beforeEach: () => {
+    usePathname.mockReturnValue("/pl");
+  },
   play: async ({ canvas }) => {
     await expect(
       canvas.getByRole("link", { name: "Bella Mąka" }),
@@ -28,6 +32,9 @@ export const Polish: Story = {
 
 export const English: Story = {
   args: { locale: "en" },
+  beforeEach: () => {
+    usePathname.mockReturnValue("/en");
+  },
   play: async ({ canvas }) => {
     await expect(
       canvas.getByRole("link", { name: "Bella Mąka" }),

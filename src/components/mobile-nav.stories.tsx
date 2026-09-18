@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { usePathname } from "@storybook/nextjs-vite/navigation.mock";
 import { expect, waitFor, within } from "storybook/test";
 import { MobileNav } from "./mobile-nav";
 
@@ -20,6 +21,11 @@ export const Default: Story = {
     orderLabel: "Zamów online",
     openLabel: "Otwórz menu",
     siteName: "Bella Mąka",
+    locale: "pl",
+    switchLanguageLabel: "Zmień język",
+  },
+  beforeEach: () => {
+    usePathname.mockReturnValue("/pl/menu");
   },
   play: async ({ canvas, userEvent, canvasElement }) => {
     await userEvent.click(canvas.getByRole("button", { name: "Otwórz menu" }));
