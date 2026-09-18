@@ -64,7 +64,7 @@ const dictionaries = {
       title: "O nas",
       // TODO: właściciel — historia pizzerii, kiedy powstała, skąd nazwa
       // "Bella Mąka", co jest dla was ważne w robieniu pizzy.
-      body: "Bella Mąka działa w Brzegu Dolnym przy ul. Stanisława Wyspiańskiego 16/Lok. 6A. Tu wpiszemy prawdziwą historię lokalu — poproś właściciela o kilka zdań o początkach, zespole i podejściu do robienia pizzy.",
+      body: "Bella Mąka działa w Brzegu Dolnym przy ul. Stanisława Wyspiańskiego 16/Lok. 6A.",
     },
     reviews: {
       title: "Opinie",

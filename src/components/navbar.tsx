@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { UtensilsCrossed } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 import { MobileNav } from "@/components/mobile-nav";
@@ -61,6 +62,23 @@ export function Navbar({ locale }: { locale: Locale }) {
             {dict.nav.orderOnline}
           </Button>
         </div>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden"
+          nativeButton={false}
+          render={
+            <a
+              href={site.social.pyszne}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={dict.nav.orderOnline}
+            />
+          }
+        >
+          <UtensilsCrossed className="size-5" />
+        </Button>
 
         <MobileNav
           links={links}
