@@ -1,10 +1,5 @@
 import type { Locale } from "./config";
 
-// Marketing/brand copy that hasn't been through a real translation pass yet
-// is prefixed "TODO_TRANSLATE:" with the Polish original inline — searchable,
-// visibly wrong if it ever ships, never a fabricated brand voice. Structural
-// UI chrome (nav labels, buttons, form labels) is translated directly.
-
 const dictionaries = {
   pl: {
     nav: {
@@ -119,39 +114,37 @@ const dictionaries = {
     },
     home: {
       cityTagline: "Brzeg Dolny, Lower Silesia",
-      heroTitleLine1: "TODO_TRANSLATE: Pizza z pieca,",
-      heroTitleLine2: "TODO_TRANSLATE: prosto z Brzegu Dolnego",
+      heroTitleLine1: "Pizza from the oven,",
+      heroTitleLine2: "straight from Brzeg Dolny",
       heroSubtitle:
-        "TODO_TRANSLATE: Bella Mąka — rodzinna pizzeria przy ul. Stanisława Wyspiańskiego 16/Lok. 6A. Szybki dowóz i wynos, zamówienia online przez pyszne.pl.",
+        "Bella Mąka — a family pizzeria at ul. Stanisława Wyspiańskiego 16/Lok. 6A. Fast delivery and takeaway, order online via pyszne.pl.",
       ctaOrder: "Order online",
       ctaMenu: "See the menu",
-      featureDeliveryTitle: "TODO_TRANSLATE: Szybki dowóz",
-      featureDeliveryDesc:
-        "TODO_TRANSLATE: Prosto pod drzwi, darmowa dostawa od 30 zł.",
-      featureLocationTitle: "TODO_TRANSLATE: Dogodna lokalizacja",
+      featureDeliveryTitle: "Fast delivery",
+      featureDeliveryDesc: "Straight to your door, free delivery from 30 zł.",
+      featureLocationTitle: "Convenient location",
       featureLocationDesc:
-        "TODO_TRANSLATE: Wejście od tyłu budynku, 56-120 Brzeg Dolny.",
-      featureOvenTitle: "TODO_TRANSLATE: Prosto z pieca",
-      featureOvenDesc: "TODO_TRANSLATE: Świeże ciasto, codziennie na miejscu.",
-      highlightsTitle: "TODO_TRANSLATE: Nasze hity",
-      highlightsSubtitle:
-        "TODO_TRANSLATE: Pełna karta i zamówienia na pyszne.pl.",
+        "Entrance from the back of the building, 56-120 Brzeg Dolny.",
+      featureOvenTitle: "Fresh from the oven",
+      featureOvenDesc: "Fresh dough, made on site every day.",
+      highlightsTitle: "Our favourites",
+      highlightsSubtitle: "Full menu and online orders on pyszne.pl.",
       allMenuCta: "Full menu",
     },
     menu: {
       title: "Menu",
-      note: "TODO_TRANSLATE: Darmowa dostawa od 30 zł. Cena zawiera opakowanie. Pełna karta (pizza, sałatki, napoje, dodatki) i zamówienia online — na pyszne.pl.",
+      note: "Free delivery from 30 zł. Price includes packaging. Full menu (pizza, salads, drinks, extras) and online orders — on pyszne.pl.",
       tagWege: "veggie",
       tagOstre: "spicy",
-      partialTitle: "TODO_TRANSLATE: To tylko część karty",
+      partialTitle: "This is only part of the menu",
       partialSubtitle:
-        "TODO_TRANSLATE: Pełne menu — 20 rodzajów pizzy, sałatki, napoje i dodatki — oraz zamówienia online znajdziesz na pyszne.pl.",
+        "Full menu — 20 kinds of pizza, salads, drinks and extras — plus online ordering, on pyszne.pl.",
       partialCta: "Full menu & order",
     },
     gallery: {
       title: "Gallery",
       subtitle:
-        "TODO_TRANSLATE: Prosto z pieca i z sali — Bella Mąka na co dzień.",
+        "Straight from the oven and the dining room — Bella Mąka, every day.",
       imageAlt: "Bella Mąka — photo from the pizzeria",
     },
     contact: {
@@ -168,7 +161,7 @@ const dictionaries = {
       title: "About us",
       // TODO: owner — pizzeria history, when it opened, where the "Bella
       // Mąka" name comes from, what matters to you about making pizza.
-      body: "TODO_TRANSLATE: Bella Mąka działa w Brzegu Dolnym przy ul. Stanisława Wyspiańskiego 16/Lok. 6A. Tu wpiszemy prawdziwą historię lokalu — poproś właściciela o kilka zdań o początkach, zespole i podejściu do robienia pizzy.",
+      body: "Bella Mąka is located in Brzeg Dolny at ul. Stanisława Wyspiańskiego 16/Lok. 6A. We'll put the real story of the place here — ask the owner for a few sentences about the beginnings, the team, and the approach to making pizza.",
     },
     reviews: {
       title: "Reviews",
@@ -187,9 +180,9 @@ const dictionaries = {
       // or a lawyer (GDPR, data controller, legal basis, retention period,
       // user rights).
       p1Prefix:
-        "TODO_TRANSLATE: Administratorem danych jest Bella Mąka, ul. Stanisława Wyspiańskiego 16/Lok. 6A, 56-120 Brzeg Dolny.",
-      p2: "TODO_TRANSLATE: Strona korzysta z plików cookie Google Analytics wyłącznie po wyrażeniu zgody w bannerze cookie. Zgodę można wycofać w dowolnym momencie, czyszcząc dane strony w przeglądarce.",
-      p3Prefix: "TODO_TRANSLATE: Kontakt w sprawie danych osobowych:",
+        "The data controller is Bella Mąka, ul. Stanisława Wyspiańskiego 16/Lok. 6A, 56-120 Brzeg Dolny.",
+      p2: "The site uses Google Analytics cookies only after consent is given in the cookie banner. Consent can be withdrawn at any time by clearing the site's data in your browser.",
+      p3Prefix: "Contact regarding personal data:",
     },
     footer: {
       hoursTitle: "Opening hours",
@@ -199,7 +192,7 @@ const dictionaries = {
       privacyPolicy: "Privacy policy",
     },
     cookieConsent: {
-      text: "TODO_TRANSLATE: Używamy plików cookie do analizy ruchu na stronie (Google Analytics). Możesz zaakceptować lub odrzucić — zobacz",
+      text: "We use cookies to analyse site traffic (Google Analytics). You can accept or decline — see",
       privacyLink: "privacy policy",
       accept: "Accept",
       decline: "Decline",
