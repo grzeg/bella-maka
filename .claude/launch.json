@@ -2,10 +2,16 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "dev",
-      "runtimeExecutable": "npm",
+      "name": "bella-maka-dev",
+      "runtimeExecutable": "pnpm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
+    },
+    {
+      "name": "bella-maka-storybook",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "storybook"],
+      "port": 6006
     }
   ]
 }

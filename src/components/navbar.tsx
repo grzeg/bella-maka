@@ -1,25 +1,29 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 import { MobileNav } from "@/components/mobile-nav";
-import Image from "next/image";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/config";
 
-const links = [
-  { href: "/menu", label: "Menu" },
-  { href: "/galeria", label: "Galeria" },
-  { href: "/opinie", label: "Opinie" },
-  { href: "/o-nas", label: "O nas" },
-  { href: "/blog", label: "Blog" },
-  { href: "/kontakt", label: "Kontakt" },
-];
+export function Navbar({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
 
-export function Navbar() {
+  const links = [
+    { href: `/${locale}/menu`, label: dict.nav.menu },
+    { href: `/${locale}/galeria`, label: dict.nav.gallery },
+    { href: `/${locale}/opinie`, label: dict.nav.reviews },
+    { href: `/${locale}/o-nas`, label: dict.nav.about },
+    { href: `/${locale}/blog`, label: dict.nav.blog },
+    { href: `/${locale}/kontakt`, label: dict.nav.contact },
+  ];
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+    <header className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/80 sticky top-0 z-40 border-b backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link
-          href="/"
-          className="flex items-center gap-2 font-brand text-2xl text-primary"
+          href={`/${locale}`}
+          className="font-brand text-primary flex items-center gap-2 text-2xl"
         >
           <Image
             src="/images/logo/badge.jpg"
@@ -36,7 +40,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+              className="text-foreground/80 hover:text-primary text-sm font-medium transition-colors"
             >
               {link.label}
             </Link>
@@ -46,13 +50,24 @@ export function Navbar() {
         <div className="hidden md:block">
           <Button
             nativeButton={false}
-            render={<a href={site.social.pyszne} target="_blank" rel="noopener noreferrer" />}
+            render={
+              <a
+                href={site.social.pyszne}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            }
           >
-            Zamów online
+            {dict.nav.orderOnline}
           </Button>
         </div>
 
-        <MobileNav links={links} />
+        <MobileNav
+          links={links}
+          orderLabel={dict.nav.orderOnline}
+          openLabel={dict.nav.openMenu}
+          siteName={site.name}
+        />
       </div>
     </header>
   );

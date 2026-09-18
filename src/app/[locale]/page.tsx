@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Bike, MapPin, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,95 +8,125 @@ import { Badge } from "@/components/ui/badge";
 import { site } from "@/data/site";
 import { menuHighlights, pizzaSizes } from "@/data/menu";
 import { HeroMedia } from "@/components/hero-media";
+import { isLocale, locales } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
-export default function HomePage() {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const dict = getDictionary(locale);
+
   return (
     <>
       <section className="relative isolate flex min-h-[540px] items-center overflow-hidden sm:min-h-[640px]">
-        <HeroMedia src="/images/hero/loop.mp4" poster="/images/hero/poster.jpg" />
+        <HeroMedia
+          src="/images/hero/loop.mp4"
+          poster="/images/hero/poster.jpg"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/10" />
 
         <div className="relative mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-white/80">
-            {site.city}, Dolny Śląsk
+          <p className="text-sm font-semibold tracking-wide text-white/80 uppercase">
+            {dict.home.cityTagline}
           </p>
-          <h1 className="mt-2 max-w-2xl text-balance font-heading text-5xl font-bold leading-[1.05] text-white sm:text-6xl">
-            Pizza z pieca,
+          <h1 className="font-heading mt-2 max-w-2xl text-5xl leading-[1.05] font-bold text-balance text-white sm:text-6xl">
+            {dict.home.heroTitleLine1}
             <br />
-            prosto z {site.cityGenitive}
+            {dict.home.heroTitleLine2}
           </h1>
           <p className="mt-4 max-w-prose text-base leading-relaxed text-white/85">
-            {site.name} — rodzinna pizzeria przy {site.address.street}.
-            Szybki dowóz i wynos, zamówienia online przez pyszne.pl.
+            {dict.home.heroSubtitle}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button
               size="lg"
               nativeButton={false}
               render={
-                <a href={site.social.pyszne} target="_blank" rel="noopener noreferrer" />
+                <a
+                  href={site.social.pyszne}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
               }
             >
-              Zamów online
+              {dict.home.ctaOrder}
             </Button>
             <Button
               size="lg"
               variant="outline"
               nativeButton={false}
               className="border-white/70 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
-              render={<Link href="/menu" />}
+              render={<Link href={`/${locale}/menu`} />}
             >
-              Zobacz menu
+              {dict.home.ctaMenu}
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border">
+      <section className="border-border border-b">
         <div className="mx-auto grid max-w-6xl gap-4 px-4 py-10 sm:grid-cols-3 sm:px-6">
           <Card className="border-border/60">
             <CardContent className="flex flex-col items-start gap-2 pt-0">
-              <Bike className="size-6 text-primary" />
-              <p className="font-semibold text-foreground">Szybki dowóz</p>
-              <p className="text-sm text-muted-foreground">
-                Prosto pod drzwi, darmowa dostawa od 30 zł.
+              <Bike className="text-primary size-6" />
+              <p className="text-foreground font-semibold">
+                {dict.home.featureDeliveryTitle}
+              </p>
+              <p className="text-muted-foreground text-sm">
+                {dict.home.featureDeliveryDesc}
               </p>
             </CardContent>
           </Card>
           <Card className="border-border/60">
             <CardContent className="flex flex-col items-start gap-2 pt-0">
-              <MapPin className="size-6 text-primary" />
-              <p className="font-semibold text-foreground">Dogodna lokalizacja</p>
-              <p className="text-sm text-muted-foreground">
-                Wejście od tyłu budynku, {site.address.postalCode} {site.city}.
+              <MapPin className="text-primary size-6" />
+              <p className="text-foreground font-semibold">
+                {dict.home.featureLocationTitle}
+              </p>
+              <p className="text-muted-foreground text-sm">
+                {dict.home.featureLocationDesc}
               </p>
             </CardContent>
           </Card>
           <Card className="border-border/60">
             <CardContent className="flex flex-col items-start gap-2 pt-0">
-              <Flame className="size-6 text-primary" />
-              <p className="font-semibold text-foreground">Prosto z pieca</p>
-              <p className="text-sm text-muted-foreground">
-                Świeże ciasto, codziennie na miejscu.
+              <Flame className="text-primary size-6" />
+              <p className="text-foreground font-semibold">
+                {dict.home.featureOvenTitle}
+              </p>
+              <p className="text-muted-foreground text-sm">
+                {dict.home.featureOvenDesc}
               </p>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      <section className="border-t border-border bg-card/50 py-14">
+      <section className="border-border bg-card/50 border-t py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 className="font-heading text-2xl font-semibold text-foreground sm:text-3xl">
-                Nasze hity
+              <h2 className="font-heading text-foreground text-2xl font-semibold sm:text-3xl">
+                {dict.home.highlightsTitle}
               </h2>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Pełna karta i zamówienia na pyszne.pl.
+              <p className="text-muted-foreground mt-1 text-sm">
+                {dict.home.highlightsSubtitle}
               </p>
             </div>
-            <Button variant="outline" nativeButton={false} render={<Link href="/menu" />}>
-              Całe menu
+            <Button
+              variant="outline"
+              nativeButton={false}
+              render={<Link href={`/${locale}/menu`} />}
+            >
+              {dict.home.allMenuCta}
             </Button>
           </div>
 
@@ -111,19 +142,21 @@ export default function HomePage() {
                 />
                 <CardContent>
                   <div className="flex items-start justify-between gap-2">
-                    <p className="font-heading text-lg font-semibold text-foreground">
+                    <p className="font-heading text-foreground text-lg font-semibold">
                       {item.name}
                     </p>
                     {item.tags?.map((tag) => (
                       <Badge key={tag} variant="secondary" className="shrink-0">
-                        {tag === "wege" ? "wege" : "ostre"}
+                        {tag === "wege"
+                          ? dict.menu.tagWege
+                          : dict.menu.tagOstre}
                       </Badge>
                     ))}
                   </div>
-                  <p className="mt-1.5 text-sm text-muted-foreground">
+                  <p className="text-muted-foreground mt-1.5 text-sm">
                     {item.description}
                   </p>
-                  <div className="mt-3 flex gap-3 text-sm font-medium tabular-nums text-foreground/80">
+                  <div className="text-foreground/80 mt-3 flex gap-3 text-sm font-medium tabular-nums">
                     {item.prices.map((price, i) => (
                       <span key={pizzaSizes[i]}>
                         {pizzaSizes[i]}: {price} zł

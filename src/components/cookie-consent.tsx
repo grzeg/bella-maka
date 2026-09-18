@@ -4,13 +4,25 @@ import { useEffect, useState } from "react";
 import Script from "next/script";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/config";
 
 type Consent = "granted" | "denied";
 
 const STORAGE_KEY = "bella-maka-cookie-consent";
 
-export function CookieConsent({ gaId }: { gaId?: string }) {
-  const [state, setState] = useState<{ consent: Consent | null; hydrated: boolean }>({
+export function CookieConsent({
+  gaId,
+  locale,
+}: {
+  gaId?: string;
+  locale: Locale;
+}) {
+  const dict = getDictionary(locale);
+  const [state, setState] = useState<{
+    consent: Consent | null;
+    hydrated: boolean;
+  }>({
     consent: null,
     hydrated: false,
   });
@@ -52,21 +64,25 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
       )}
 
       {hydrated && consent === null && (
-        <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card px-4 py-4 shadow-lg sm:px-6">
+        <div className="border-border bg-card fixed inset-x-0 bottom-0 z-50 border-t px-4 py-4 shadow-lg sm:px-6">
           <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-card-foreground">
-              Używamy plików cookie do analizy ruchu na stronie (Google Analytics).
-              Możesz zaakceptować lub odrzucić — zobacz{" "}
-              <Link href="/polityka-prywatnosci" className="underline underline-offset-2">
-                politykę prywatności
+            <p className="text-card-foreground text-sm">
+              {dict.cookieConsent.text}{" "}
+              <Link
+                href={`/${locale}/polityka-prywatnosci`}
+                className="underline underline-offset-2"
+              >
+                {dict.cookieConsent.privacyLink}
               </Link>
               .
             </p>
             <div className="flex shrink-0 gap-2">
               <Button variant="outline" onClick={() => choose("denied")}>
-                Odrzuć
+                {dict.cookieConsent.decline}
               </Button>
-              <Button onClick={() => choose("granted")}>Akceptuj</Button>
+              <Button onClick={() => choose("granted")}>
+                {dict.cookieConsent.accept}
+              </Button>
             </div>
           </div>
         </div>

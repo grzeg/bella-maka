@@ -19,7 +19,11 @@ function getServerSnapshot() {
 }
 
 export function HeroMedia({ src, poster }: { src: string; poster: string }) {
-  const prefersReducedMotion = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot,
+  );
 
   return (
     <video
