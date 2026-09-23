@@ -85,6 +85,7 @@ const dictionaries = {
       orderOnPyszne: "Zamów na pyszne.pl",
       rightsReserved: "Wszystkie prawa zastrzeżone.",
       privacyPolicy: "Polityka prywatności",
+      siteBy: "Projekt i wykonanie strony:",
     },
     cookieConsent: {
       text: "Używamy plików cookie do analizy ruchu na stronie (Google Analytics). Możesz zaakceptować lub odrzucić — zobacz",
@@ -181,6 +182,7 @@ const dictionaries = {
       orderOnPyszne: "Order on pyszne.pl",
       rightsReserved: "All rights reserved.",
       privacyPolicy: "Privacy policy",
+      siteBy: "Website design & development:",
     },
     cookieConsent: {
       text: "We use cookies to analyse site traffic (Google Analytics). You can accept or decline — see",

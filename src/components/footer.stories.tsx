@@ -17,6 +17,9 @@ export const Polish: Story = {
     await expect(
       canvas.getByRole("link", { name: "Polityka prywatności" }),
     ).toHaveAttribute("href", "/pl/polityka-prywatnosci");
+    await expect(
+      canvas.getByRole("link", { name: "Pixelite" }),
+    ).toHaveAttribute("href", "https://pixelite.pl");
   },
 };
 
