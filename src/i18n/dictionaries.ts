@@ -95,6 +95,17 @@ const dictionaries = {
     },
     blog: {
       title: "Blog",
+      empty: "Nie ma jeszcze żadnych wpisów — zajrzyj wkrótce.",
+      fromFacebook: "Z Facebooka",
+      viewOnFacebook: "Zobacz oryginalny wpis na Facebooku",
+      opensInNewTab: "(otwiera się w nowej karcie)",
+      galleryTitle: "Zdjęcia",
+      openImage: "Otwórz zdjęcie w pełnym rozmiarze:",
+      backToBlog: "Wszystkie wpisy",
+      writtenIn: {
+        pl: "Wpis dostępny tylko po polsku.",
+        en: "Wpis dostępny tylko po angielsku.",
+      },
     },
   },
   en: {
@@ -192,6 +203,17 @@ const dictionaries = {
     },
     blog: {
       title: "Blog",
+      empty: "No posts yet — check back soon.",
+      fromFacebook: "From Facebook",
+      viewOnFacebook: "See the original post on Facebook",
+      opensInNewTab: "(opens in a new tab)",
+      galleryTitle: "Photos",
+      openImage: "Open full-size photo:",
+      backToBlog: "All posts",
+      writtenIn: {
+        pl: "This post is available in Polish only.",
+        en: "This post is available in English only.",
+      },
     },
   },
 } as const;
