@@ -80,6 +80,17 @@ export function Footer({ locale }: { locale: Locale }) {
         >
           {dict.footer.privacyPolicy}
         </Link>
+        <p className="mt-2">
+          {dict.footer.siteBy} © {new Date().getFullYear()}{" "}
+          <a
+            href="https://pixelite.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary underline underline-offset-2"
+          >
+            Pixelite
+          </a>
+        </p>
       </div>
     </footer>
   );
