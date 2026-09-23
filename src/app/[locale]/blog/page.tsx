@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PostCard } from "@/components/blog/post-card";
 import { site } from "@/data/site";
 import { getAllPosts } from "@/lib/blog";
-import { isLocale, locales, type Locale } from "@/i18n/config";
+import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-
-const dateLocaleByLocale: Record<Locale, string> = {
-  pl: "pl-PL",
-  en: "en-US",
-};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -44,34 +39,15 @@ export default async function BlogPage({
         {dict.blog.title}
       </h1>
 
-      <div className="mt-8 space-y-8">
-        {posts.map((post) => (
-          <article
-            key={post.slug}
-            className="border-border border-b pb-8 last:border-0"
-          >
-            <time className="text-muted-foreground text-sm tabular-nums">
-              {new Date(post.date).toLocaleDateString(
-                dateLocaleByLocale[locale],
-                {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                },
-              )}
-            </time>
-            <h2 className="font-heading text-foreground mt-1 text-xl font-semibold">
-              <Link
-                href={`/${locale}/blog/${post.slug}`}
-                className="hover:text-primary"
-              >
-                {post.title}
-              </Link>
-            </h2>
-            <p className="text-muted-foreground mt-2 text-sm">{post.excerpt}</p>
-          </article>
-        ))}
-      </div>
+      {posts.length === 0 ? (
+        <p className="text-muted-foreground mt-8">{dict.blog.empty}</p>
+      ) : (
+        <div className="mt-8 space-y-8">
+          {posts.map((post) => (
+            <PostCard key={post.slug} post={post} locale={locale} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }

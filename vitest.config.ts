@@ -35,6 +35,7 @@ export default defineConfig({
       },
       // Plain-logic tests (src/lib, src/i18n, middleware rules) — node, no browser.
       {
+        resolve: { alias: { "@": path.join(dirname, "src") } },
         test: {
           name: "unit",
           environment: "node",
