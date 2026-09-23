@@ -58,9 +58,34 @@ const dictionaries = {
     },
     about: {
       title: "O nas",
-      // TODO: właściciel — historia pizzerii, kiedy powstała, skąd nazwa
-      // "Bella Mąka", co jest dla was ważne w robieniu pizzy.
-      body: "Bella Mąka działa w Brzegu Dolnym przy ul. Stanisława Wyspiańskiego 16/Lok. 6A.",
+      metaDescription:
+        "Bella Mąka to rodzinna pizzeria w Brzegu Dolnym: ciasto robione codziennie na miejscu, pizza z pieca, jedzenie na miejscu, wynos i dowóz.",
+      // TODO: właściciel — historia pizzerii (kiedy powstała, skąd nazwa
+      // "Bella Mąka"). Dopisać jako osobny akapit, nie zgadywać.
+      lead: "Bella Mąka to rodzinna pizzeria w Brzegu Dolnym, przy ul. Stanisława Wyspiańskiego. Pieczemy pizzę na cieście przygotowywanym codziennie na miejscu.",
+      interiorAlt:
+        "Wnętrze pizzerii Bella Mąka: lada z ciemnej cegły, piec w głębi i stoliki z drewnianymi stołkami",
+      doughTitle: "Ciasto i piec",
+      doughBody:
+        "Wszystko zaczyna się od ciasta. Przygotowujemy je codziennie u nas w lokalu, a każdą pizzę składamy ręcznie: rozwałkowane ciasto, sos, ser, dodatki i prosto do pieca.",
+      doughImageAlt: "Kulki świeżego ciasta na pizzę przy sitach do pizzy",
+      sauceImageAlt:
+        "Rozprowadzanie sosu pomidorowego łyżką na rozwałkowanym cieście",
+      menuTitle: "Karta",
+      menuBody:
+        "W karcie mamy dwadzieścia pizz, od klasycznej Napoli z bazylią po ostrą Rimini z jalapeño. Każdą przygotujemy w trzech rozmiarach: 28, 35 albo 45 cm. Są też pozycje wegetariańskie i wegańskie, sałatki i napoje. Listę alergenów znajdziesz u nas w lokalu.",
+      ovenImageAlt: "Pizza piekąca się w piecu Bella Mąka",
+      visitTitle: "Na miejscu, na wynos, z dowozem",
+      visitBody:
+        "Możesz zjeść u nas na miejscu, odebrać zamówienie na wynos albo zamówić dowóz. Dowóz jest darmowy od 30 zł. Zamówienia przyjmujemy telefonicznie i online przez pyszne.pl. Do lokalu wchodzi się od tyłu budynku.",
+      newsBody: "Promocje i nowości ogłaszamy na Facebooku i na naszym blogu.",
+      addressLabel: "Adres",
+      phoneLabel: "Telefon",
+      ctaOrder: "Zamów online",
+      ctaContact: "Dojazd i kontakt",
+      ctaGallery: "Zobacz galerię",
+      ctaBlog: "Czytaj bloga",
+      facebookLabel: "Facebook",
     },
     reviews: {
       title: "Opinie",
@@ -167,9 +192,34 @@ const dictionaries = {
     },
     about: {
       title: "About us",
-      // TODO: owner — pizzeria history, when it opened, where the "Bella
-      // Mąka" name comes from, what matters to you about making pizza.
-      body: "Bella Mąka is located in Brzeg Dolny at ul. Stanisława Wyspiańskiego 16/Lok. 6A. We'll put the real story of the place here — ask the owner for a few sentences about the beginnings, the team, and the approach to making pizza.",
+      metaDescription:
+        "Bella Mąka is a family pizzeria in Brzeg Dolny: dough made fresh every day on site, pizza straight from the oven, eat in, takeaway and delivery.",
+      // TODO: owner — pizzeria history (when it opened, where the "Bella
+      // Mąka" name comes from). Add as a separate paragraph, don't guess.
+      lead: "Bella Mąka is a family pizzeria in Brzeg Dolny, on ul. Stanisława Wyspiańskiego. We bake our pizza on dough made fresh every day on site.",
+      interiorAlt:
+        "Inside the Bella Mąka pizzeria: a dark brick counter, the oven at the back and tables with wooden stools",
+      doughTitle: "Dough and oven",
+      doughBody:
+        "It all starts with the dough. We make it every day right here, and every pizza is put together by hand: rolled-out dough, sauce, cheese, toppings, and straight into the oven.",
+      doughImageAlt: "Balls of fresh pizza dough next to pizza screens",
+      sauceImageAlt:
+        "Spreading tomato sauce with a spoon over rolled-out dough",
+      menuTitle: "The menu",
+      menuBody:
+        "Our menu has twenty pizzas, from a classic Napoli with basil to a spicy Rimini with jalapeño. Every pizza comes in three sizes: 28, 35 or 45 cm. There are vegetarian and vegan options too, plus salads and drinks. The allergen list is available at the pizzeria.",
+      ovenImageAlt: "Pizza baking in the Bella Mąka oven",
+      visitTitle: "Eat in, take away or get it delivered",
+      visitBody:
+        "You can eat with us, pick up your order to take away, or have it delivered. Delivery is free on orders from 30 zł. We take orders by phone and online via pyszne.pl. The entrance is at the back of the building.",
+      newsBody: "We announce offers and news on Facebook and on our blog.",
+      addressLabel: "Address",
+      phoneLabel: "Phone",
+      ctaOrder: "Order online",
+      ctaContact: "Directions and contact",
+      ctaGallery: "See the gallery",
+      ctaBlog: "Read the blog",
+      facebookLabel: "Facebook",
     },
     reviews: {
       title: "Reviews",
