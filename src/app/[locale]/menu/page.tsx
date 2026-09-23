@@ -50,6 +50,7 @@ export default async function MenuPage({
               alt={`Pizza ${item.name}`}
               width={640}
               height={420}
+              sizes="(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw"
               className="h-44 w-full object-cover"
             />
             <CardContent>
