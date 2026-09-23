@@ -29,6 +29,7 @@ export default async function HomePage({
       <section className="relative isolate flex min-h-[540px] items-center overflow-hidden sm:min-h-[640px]">
         <HeroMedia
           src="/images/hero/loop-main.mp4"
+          mobileSrc="/images/hero/loop-main-mobile.mp4"
           poster="/images/hero/poster.jpg"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/10" />
@@ -138,6 +139,7 @@ export default async function HomePage({
                   alt={`Pizza ${item.name}`}
                   width={640}
                   height={420}
+                  sizes="(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw"
                   className="h-44 w-full object-cover"
                 />
                 <CardContent>
