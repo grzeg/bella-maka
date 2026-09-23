@@ -63,8 +63,9 @@ Tracked as `TODO` (Polish) / `TODO_TRANSLATE` (English) in the codebase —
 not invented, not blocking the build:
 
 - `src/data/site.ts` — real phone number, real opening hours, final domain.
-- `src/i18n/dictionaries.ts` → `about.body` (PL and EN) — real founding
-  story from the owner.
+- `src/i18n/dictionaries.ts` → `about` (PL and EN) — the page describes the
+  dough, menu and ways to order from known facts; the founding story (when it
+  opened, where the name comes from) still needs the owner.
 - `src/i18n/dictionaries.ts` → `reviews` — real reviews or a Google Reviews
   widget, replacing the two placeholders.
 - `src/i18n/dictionaries.ts` → `privacy` (PL and EN) — legal text needs
