@@ -2,6 +2,44 @@ import type { Locale } from "./config";
 
 const dictionaries = {
   pl: {
+    // <title>/<meta description> and share-image alt per page. About has its
+    // own title/metaDescription inside `about`.
+    meta: {
+      homeImageAlt: "Pizza z pieca w pizzerii Bella Mąka w Brzegu Dolnym",
+      home: {
+        title: "Bella Mąka — Pizzeria w Brzegu Dolnym",
+        description:
+          "Pizzeria Bella Mąka w Brzegu Dolnym — pizza z pieca, szybki dowóz i wynos. Zamówienia online przez pyszne.pl.",
+      },
+      menu: {
+        title: "Menu i ceny pizzy",
+        description:
+          "Menu pizzerii Bella Mąka w Brzegu Dolnym — wybrane pizze i ceny. Pełna karta i zamówienia na pyszne.pl.",
+      },
+      gallery: {
+        title: "Galeria zdjęć",
+        description:
+          "Zdjęcia pizzy, pieca i wnętrza pizzerii Bella Mąka w Brzegu Dolnym.",
+      },
+      contact: {
+        title: "Kontakt, adres i godziny otwarcia",
+        description:
+          "Adres, godziny otwarcia i telefon do pizzerii Bella Mąka w Brzegu Dolnym.",
+      },
+      reviews: {
+        title: "Opinie klientów",
+        description: "Opinie klientów o pizzerii Bella Mąka w Brzegu Dolnym.",
+      },
+      blog: {
+        title: "Nowości i promocje",
+        description:
+          "Nowości i promocje pizzerii Bella Mąka w Brzegu Dolnym — blog.",
+      },
+      privacy: {
+        title: "Polityka prywatności",
+        description: "Polityka prywatności strony pizzerii Bella Mąka.",
+      },
+    },
     nav: {
       menu: "Menu",
       gallery: "Galeria",
@@ -34,6 +72,7 @@ const dictionaries = {
     menu: {
       title: "Menu",
       note: "Darmowa dostawa od 30 zł. Cena zawiera opakowanie. Pełna karta (pizza, sałatki, napoje, dodatki) i zamówienia online — na pyszne.pl.",
+      pizzaImageAlt: "Pizza {name}",
       tagWege: "wege",
       tagOstre: "ostre",
       partialTitle: "To tylko część karty",
@@ -45,6 +84,68 @@ const dictionaries = {
       title: "Galeria",
       subtitle: "Prosto z pieca i z sali — Bella Mąka na co dzień.",
       imageAlt: "Bella Mąka — zdjęcie z pizzerii",
+      // Per-file alt (key = file name in public/images/gallery); files without an
+      // entry fall back to the generic imageAlt above.
+      photoAlts: {
+        "678236393_122108356682946185_9087006221761922777_n.jpg":
+          "Pizza z salami i jalapeño na blacie, w tle wnętrze pizzerii",
+        "681172380_122109315758946185_5816188189101238378_n.jpg":
+          "Pizza z rukolą, pomidorkami koktajlowymi i parmezanem",
+        "690676977_122110435442946185_315487328596184958_n.jpg":
+          "Pizza z szynką, korniszonami i cebulą",
+        "709864983_122114201918946185_791720273738378839_n.jpg":
+          "Pizza w kartonie: jedna połowa z salami, druga z rukolą i pomidorami",
+        "712275247_122114591006946185_4729532188410140497_n.jpg":
+          "Pizza z pieczarkami, papryką i oliwkami",
+        "723675641_122116913792946185_6017507405857854950_n.jpg":
+          "Lada z pojemnikami z serem, sosem pomidorowym i dodatkami do pizzy",
+        "724937293_122116652564946185_2100637243274836640_n.jpg":
+          "Rozsmarowywanie sosu pomidorowego łyżką na rozwałkowanym cieście",
+        "727543119_122117242850946185_1573333033143380203_n.jpg":
+          "Pizza w kartonie: jedna połowa z pieczarkami i papryką, druga z rukolą i parmezanem",
+        "730608378_122117446724946185_8776755293474888288_n.jpg":
+          "Pizza z rukolą, pomidorami i parmezanem obok butelki napoju",
+        "731787924_122117708930946185_6389327317895970416_n.jpg":
+          "Pracownik w koszulce z logo Bella Mąka trzyma pizzę z salami i jalapeño",
+        "732813799_122118238700946185_2928710676832217233_n.jpg":
+          "Pizza z salami i jalapeño na papierze do pieczenia przy ceglanej ścianie",
+        "737543666_122118486164946185_7479663703818371328_n.jpg":
+          "Pizza z szynką, kukurydzą, pieczarkami i bazylią",
+        "739200219_122119107554946185_7411014529842675684_n.jpg":
+          "Pizza z pieczarkami i papryką przed otworem pieca",
+        "742001928_122119379456946185_7581732249834831093_n.jpg":
+          "Pracownik w koszulce z logo Bella Mąka trzyma pizzę z szynką",
+        "743234584_122119653116946185_4102379689060176804_n.jpg":
+          "Pizza z serem na łopacie przy otwartym piecu",
+        "751303525_122120992856946185_2637267718236037275_n.jpg":
+          "Pizza wewnątrz pieca",
+        "757955002_122122040870946185_6001159039285075233_n.jpg":
+          "Pizza z pieczarkami, papryką i oliwkami widziana z góry",
+        "764006289_122122870184946185_3189412169458248103_n.jpg":
+          "Karton z pizzą obok pieca z niebieskim panelem sterowania",
+        "pizza1.jpg": "Pizza z mięsem, pieczarkami i cebulą widziana z góry",
+        "pizza11.jpeg": "Pizza w otworze pieca",
+        "pizza12.jpeg":
+          "Trzy surowe pizze z szynką obok drewnianego wałka na granitowym blacie",
+        "pizza13.jpeg":
+          "Trzy surowe pizze z szynką, korniszonami i cebulą na blacie roboczym",
+        "pizza14.jpeg":
+          "Dłonie przy małej pizzy na papierze do pieczenia na stole w sali",
+        "pizza15.jpeg":
+          "Pokrojona pizza z listkiem bazylii na drewnianej desce",
+        "pizza16.jpeg": "Pokrojona pizza z listkiem bazylii, ujęcie z boku",
+        "pizza17.jpeg": "Pizza z salami i kukurydzą w otwartym kartonie",
+        "pizza18.jpeg": "Dwie pizze w piecu",
+        "pizza19.jpeg": "Cztery otwarte kartony z pizzami na blacie",
+        "pizza21.jpeg":
+          "Pizza z jalapeño, cebulą i kukurydzą na stole z lampką i kwiatkiem",
+        "pizza22.jpeg":
+          "Kulki ciasta obok sit do pizzy i ulotki z numerem telefonu",
+        "pizza4.jpg":
+          "Trzy surowe pizze z szynką i drewniany wałek na granitowym blacie",
+        "unnamed.jpg":
+          "Wnętrze pizzerii: ceglany kontuar, piec w głębi i stoły ze stołkami",
+      },
     },
     contact: {
       title: "Kontakt",
@@ -134,6 +235,44 @@ const dictionaries = {
     },
   },
   en: {
+    // TODO: native-English pass on the meta copy (machine translation).
+    meta: {
+      homeImageAlt: "Oven-baked pizza at Bella Mąka pizzeria in Brzeg Dolny",
+      home: {
+        title: "Bella Mąka — Pizzeria in Brzeg Dolny",
+        description:
+          "Bella Mąka pizzeria in Brzeg Dolny — oven-baked pizza, fast delivery and takeaway. Order online via pyszne.pl.",
+      },
+      menu: {
+        title: "Pizza menu and prices",
+        description:
+          "The Bella Mąka menu in Brzeg Dolny — selected pizzas and prices. Full menu and online orders on pyszne.pl.",
+      },
+      gallery: {
+        title: "Photo gallery",
+        description:
+          "Photos of the pizza, the oven and the dining room at Bella Mąka pizzeria in Brzeg Dolny.",
+      },
+      contact: {
+        title: "Contact, address and opening hours",
+        description:
+          "Address, opening hours and phone number of Bella Mąka pizzeria in Brzeg Dolny.",
+      },
+      reviews: {
+        title: "Customer reviews",
+        description:
+          "What customers say about Bella Mąka pizzeria in Brzeg Dolny.",
+      },
+      blog: {
+        title: "News and offers",
+        description:
+          "News and offers from Bella Mąka pizzeria in Brzeg Dolny — the blog.",
+      },
+      privacy: {
+        title: "Privacy policy",
+        description: "Privacy policy of the Bella Mąka pizzeria website.",
+      },
+    },
     nav: {
       menu: "Menu",
       gallery: "Gallery",
@@ -167,6 +306,7 @@ const dictionaries = {
     menu: {
       title: "Menu",
       note: "Free delivery from 30 zł. Price includes packaging. Full menu (pizza, salads, drinks, extras) and online orders — on pyszne.pl.",
+      pizzaImageAlt: "{name} pizza",
       tagWege: "veggie",
       tagOstre: "spicy",
       partialTitle: "This is only part of the menu",
@@ -179,6 +319,67 @@ const dictionaries = {
       subtitle:
         "Straight from the oven and the dining room — Bella Mąka, every day.",
       imageAlt: "Bella Mąka — photo from the pizzeria",
+      // Per-file alt (key = file name in public/images/gallery); files without an
+      // entry fall back to the generic imageAlt above.
+      photoAlts: {
+        "678236393_122108356682946185_9087006221761922777_n.jpg":
+          "Pizza with salami and jalapeño on a counter, the pizzeria interior in the background",
+        "681172380_122109315758946185_5816188189101238378_n.jpg":
+          "Pizza with arugula, cherry tomatoes and parmesan",
+        "690676977_122110435442946185_315487328596184958_n.jpg":
+          "Pizza with ham, pickles and onion",
+        "709864983_122114201918946185_791720273738378839_n.jpg":
+          "Pizza in a box: one half with salami, the other with arugula and tomatoes",
+        "712275247_122114591006946185_4729532188410140497_n.jpg":
+          "Pizza with mushrooms, peppers and olives",
+        "723675641_122116913792946185_6017507405857854950_n.jpg":
+          "Counter with containers of cheese, tomato sauce and pizza toppings",
+        "724937293_122116652564946185_2100637243274836640_n.jpg":
+          "Spreading tomato sauce with a spoon over rolled-out dough",
+        "727543119_122117242850946185_1573333033143380203_n.jpg":
+          "Pizza in a box: one half with mushrooms and peppers, the other with arugula and parmesan",
+        "730608378_122117446724946185_8776755293474888288_n.jpg":
+          "Pizza with arugula, tomatoes and parmesan next to a bottle of soft drink",
+        "731787924_122117708930946185_6389327317895970416_n.jpg":
+          "Staff member in a Bella Mąka logo T-shirt holding a pizza with salami and jalapeño",
+        "732813799_122118238700946185_2928710676832217233_n.jpg":
+          "Pizza with salami and jalapeño on baking paper by a brick wall",
+        "737543666_122118486164946185_7479663703818371328_n.jpg":
+          "Pizza with ham, corn, mushrooms and basil",
+        "739200219_122119107554946185_7411014529842675684_n.jpg":
+          "Pizza with mushrooms and peppers in front of the oven opening",
+        "742001928_122119379456946185_7581732249834831093_n.jpg":
+          "Staff member in a Bella Mąka logo T-shirt holding a pizza with ham",
+        "743234584_122119653116946185_4102379689060176804_n.jpg":
+          "Cheese pizza on a peel by the open oven",
+        "751303525_122120992856946185_2637267718236037275_n.jpg":
+          "Pizza inside the oven",
+        "757955002_122122040870946185_6001159039285075233_n.jpg":
+          "Pizza with mushrooms, peppers and olives seen from above",
+        "764006289_122122870184946185_3189412169458248103_n.jpg":
+          "Pizza box next to an oven with a blue control panel",
+        "pizza1.jpg": "Pizza with meat, mushrooms and onion seen from above",
+        "pizza11.jpeg": "Pizza in the oven opening",
+        "pizza12.jpeg":
+          "Three raw ham pizzas next to a wooden rolling pin on a granite counter",
+        "pizza13.jpeg":
+          "Three raw pizzas with ham, pickles and onion on a work counter",
+        "pizza14.jpeg":
+          "Hands next to a small pizza on baking paper at a table in the dining room",
+        "pizza15.jpeg": "Sliced pizza with a basil leaf on a wooden board",
+        "pizza16.jpeg": "Sliced pizza with a basil leaf, side view",
+        "pizza17.jpeg": "Pizza with salami and corn in an open box",
+        "pizza18.jpeg": "Two pizzas in the oven",
+        "pizza19.jpeg": "Four open boxes with pizzas on a counter",
+        "pizza21.jpeg":
+          "Pizza with jalapeño, onion and corn on a table with a lamp and a flower",
+        "pizza22.jpeg":
+          "Balls of dough next to pizza screens and a flyer with a phone number",
+        "pizza4.jpg":
+          "Three raw ham pizzas and a wooden rolling pin on a granite counter",
+        "unnamed.jpg":
+          "Inside the pizzeria: a brick counter, the oven at the back and tables with stools",
+      },
     },
     contact: {
       title: "Contact",

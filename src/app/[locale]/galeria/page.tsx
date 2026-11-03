@@ -3,9 +3,9 @@ import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { site } from "@/data/site";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { buildMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -18,10 +18,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return {
-    title: "Galeria",
-    description: `Zdjęcia pizzy i wnętrza pizzerii ${site.name} w ${site.cityLocative}.`,
-  };
+  const dict = getDictionary(locale);
+  return buildMetadata({
+    locale,
+    path: "/galeria",
+    title: dict.meta.gallery.title,
+    description: dict.meta.gallery.description,
+    imageAlt: dict.meta.homeImageAlt,
+  });
 }
 
 const GALLERY_DIR = path.join(process.cwd(), "public", "images", "gallery");
@@ -43,6 +47,7 @@ export default async function GaleriaPage({
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
   const images = getGalleryImages();
+  const photoAlts: Record<string, string> = dict.gallery.photoAlts;
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
@@ -61,7 +66,9 @@ export default async function GaleriaPage({
           >
             <Image
               src={src}
-              alt={dict.gallery.imageAlt}
+              alt={
+                photoAlts[src.split("/").pop() ?? ""] ?? dict.gallery.imageAlt
+              }
               fill
               sizes="(min-width: 768px) 25vw, 50vw"
               className="object-cover"

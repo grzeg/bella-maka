@@ -6,11 +6,11 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { PlainTextBody } from "@/components/blog/plain-text-body";
 import { PostGallery } from "@/components/blog/post-gallery";
 import { Badge } from "@/components/ui/badge";
-import { site } from "@/data/site";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { formatPostDate } from "@/lib/blog-text";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { buildMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -28,28 +28,19 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return {};
 
-  const path = `/blog/${post.slug}`;
-  return {
+  const dict = getDictionary(locale);
+  return buildMetadata({
+    locale,
+    path: `/blog/${post.slug}`,
     title: post.title,
     description: post.excerpt,
-    alternates: {
-      canonical: `/${locale}${path}`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}${path}`])),
-    },
-    // Page-level openGraph replaces the layout's wholesale, so only override
-    // it when the post has its own image to share.
-    ...(post.cover && {
-      openGraph: {
-        type: "article",
-        title: post.title,
-        description: post.excerpt,
-        url: `${site.url}/${locale}${path}`,
-        siteName: site.name,
-        publishedTime: post.date,
-        images: [{ url: post.cover.src, alt: post.cover.alt }],
-      },
-    }),
-  };
+    image: post.cover
+      ? { url: post.cover.src, alt: post.cover.alt }
+      : undefined,
+    imageAlt: dict.meta.homeImageAlt,
+    type: "article",
+    publishedTime: post.date,
+  });
 }
 
 export default async function BlogPostPage({
