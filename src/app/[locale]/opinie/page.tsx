@@ -4,6 +4,7 @@ import { reviews } from "@/data/reviews";
 import { site } from "@/data/site";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { buildMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -16,10 +17,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return {
-    title: "Opinie",
-    description: `Opinie klientów o pizzerii ${site.name} w ${site.cityLocative}.`,
-  };
+  const dict = getDictionary(locale);
+  return buildMetadata({
+    locale,
+    path: "/opinie",
+    title: dict.meta.reviews.title,
+    description: dict.meta.reviews.description,
+    imageAlt: dict.meta.homeImageAlt,
+  });
 }
 
 export default async function OpiniePage({

@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import { Bodoni_Moda, Karla, Pacifico } from "next/font/google";
 import "../globals.css";
 import { site } from "@/data/site";
-import { isLocale, locales, type Locale } from "@/i18n/config";
+import { isLocale, locales } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CookieConsent } from "@/components/cookie-consent";
@@ -32,11 +33,6 @@ const brand = Pacifico({
   weight: "400",
 });
 
-const ogLocaleByLocale: Record<Locale, string> = {
-  pl: "pl_PL",
-  en: "en_US",
-};
-
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -49,39 +45,19 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLocale(locale)) return {};
 
-  const ogImage = {
-    url: "/images/hero/poster.jpg",
-    width: 1440,
-    height: 1372,
-    alt: `${site.name} — Pizzeria w ${site.cityLocative}`,
-  };
+  const dict = getDictionary(locale);
 
+  // Fallback only: every page sets its own title, description, canonical and
+  // social tags through buildMetadata() (src/lib/metadata.ts). Canonical and
+  // openGraph must NOT live here, or pages without their own would inherit
+  // the homepage's.
   return {
     metadataBase: new URL(site.url),
     title: {
-      default: `${site.name} — Pizzeria w ${site.cityLocative}`,
+      default: dict.meta.home.title,
       template: `%s — ${site.name}`,
     },
-    description: site.description,
-    alternates: {
-      canonical: `/${locale}`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
-    },
-    openGraph: {
-      title: `${site.name} — Pizzeria w ${site.cityLocative}`,
-      description: site.description,
-      url: `${site.url}/${locale}`,
-      siteName: site.name,
-      locale: ogLocaleByLocale[locale],
-      type: "website",
-      images: [ogImage],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${site.name} — Pizzeria w ${site.cityLocative}`,
-      description: site.description,
-      images: [ogImage.url],
-    },
+    description: dict.meta.home.description,
   };
 }
 
