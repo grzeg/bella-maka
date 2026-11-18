@@ -190,10 +190,12 @@ const dictionaries = {
     },
     reviews: {
       title: "Opinie",
-      seeMoreOn: "Zobacz też pełne opinie na",
+      seeMoreOn: "Wybrane opinie z Google. Zobacz wszystkie opinie w",
+      google: "Google",
+      alsoOn: "oraz na",
       facebook: "Facebooku",
       emptyState:
-        "Opinie klientów pojawią się tutaj wkrótce — zajrzyj na Facebooka.",
+        "Opinie klientów pojawią się tutaj wkrótce — zajrzyj do Google lub na Facebooka.",
     },
     privacy: {
       title: "Polityka prywatności",
@@ -424,9 +426,12 @@ const dictionaries = {
     },
     reviews: {
       title: "Reviews",
-      seeMoreOn: "See more reviews on",
+      seeMoreOn: "Selected reviews from Google. See all reviews on",
+      google: "Google",
+      alsoOn: "and on",
       facebook: "Facebook",
-      emptyState: "Customer reviews will appear here soon — check Facebook.",
+      emptyState:
+        "Customer reviews will appear here soon — check Google or Facebook.",
     },
     privacy: {
       title: "Privacy policy",

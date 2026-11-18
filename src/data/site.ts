@@ -20,5 +20,7 @@ export const site = {
   social: {
     facebook: "https://www.facebook.com/bellamakabrzegdolny/?locale=pl_PL",
     pyszne: "https://www.pyszne.pl/menu/bella-maka",
+    // TODO: podmienić na bezpośredni link do opinii w Google (Profil Firmy → "Udostępnij profil").
+    google: "https://share.google/XXuL1EpUzALDquNgu",
   },
 } as const;

@@ -45,6 +45,15 @@ export default async function OpiniePage({
       <p className="text-muted-foreground mt-3 max-w-prose">
         {dict.reviews.seeMoreOn}{" "}
         <a
+          href={site.social.google}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-primary underline underline-offset-2"
+        >
+          {dict.reviews.google}
+        </a>{" "}
+        {dict.reviews.alsoOn}{" "}
+        <a
           href={site.social.facebook}
           target="_blank"
           rel="noopener noreferrer"
